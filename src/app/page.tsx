@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Globe, Rocket, Plus, Trash2, ExternalLink, Loader2, Smartphone, Save } from 'lucide-react';
+import { DNSTable } from '@/components/dns-table';
 
 interface LinkItem {
     id: string;
@@ -167,8 +168,18 @@ export default function BioLinkEditor() {
                                 {status.message}
                             </p>
                             {status.success && (
-                                <div style={{ marginTop: '1rem', padding: '1rem', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '8px', fontSize: '0.8rem' }}>
-                                    <strong>DNS Step:</strong> Point <code>CNAME</code> to <code>cname.vercel-dns.com.</code>
+                                <div style={{ marginTop: '1.5rem' }}>
+                                    <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '0.5rem', fontWeight: 600, textTransform: 'uppercase' }}>Required DNS Records</p>
+                                    <DNSTable
+                                        records={
+                                            domain.split('.').length > 2
+                                                ? [{ type: 'CNAME', name: domain.split('.')[0], value: 'cname.vercel-dns.com.' }]
+                                                : [
+                                                    { type: 'A', name: '@', value: '76.76.21.21' },
+                                                    { type: 'CNAME', name: 'www', value: 'cname.vercel-dns.com.' }
+                                                ]
+                                        }
+                                    />
                                 </div>
                             )}
                         </div>
