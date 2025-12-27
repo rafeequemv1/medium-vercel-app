@@ -32,28 +32,28 @@ body {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
   z-index: 1;
 }
 
 .hero {
   text-align: center;
-  padding: 4rem 0;
+  padding: 2rem 0;
   position: relative;
 }
 
 .hero h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 800;
   letter-spacing: -0.05em;
   background: linear-gradient(to right, #fff, #888);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero p {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #888;
   max-width: 600px;
   margin: 0 auto;
@@ -65,38 +65,35 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--card-border);
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2rem;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.2);
+  height: fit-content;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .input-group label {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .input-field {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 1rem 1.25rem;
+  padding: 0.8rem 1rem;
   color: white;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .input-field:focus {
@@ -109,27 +106,86 @@ body {
   color: black;
   border: none;
   border-radius: 12px;
-  padding: 1rem 2rem;
+  padding: 1rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s active;
+  transition: all 0.2s ease;
   width: 100%;
 }
 
 .btn-primary:hover {
   background: #eee;
+  transform: translateY(-2px);
 }
 
-.btn-primary:disabled {
-  background: #444;
-  color: #777;
-  cursor: not-allowed;
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.status-grid {
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #fff;
+}
+
+/* Bio Link Specific */
+.bio-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 8px solid #111;
+  min-height: 640px;
+  box-shadow: 0 0 0 2px #333;
+}
+
+.bio-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.bio-link-card {
+  width: 100%;
+  padding: 0.875rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  display: block;
+}
+
+.bio-link-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.editor-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 400px;
   gap: 2rem;
   width: 100%;
 }
@@ -180,23 +236,8 @@ body {
   border: 1px solid rgba(0, 255, 128, 0.2);
 }
 
-.badge-pending {
-  background: rgba(255, 165, 0, 0.1);
-  color: orange;
-  border: 1px solid rgba(255, 165, 0, 0.2);
-}
-
-.dns-instruction {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  border: 1px dashed var(--card-border);
-}
-
-.dns-instruction code {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  color: var(--primary);
+@media (max-width: 900px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+  }
 }

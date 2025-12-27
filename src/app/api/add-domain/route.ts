@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
         // Call Vercel API to add domain
         const response = await axios.post(
-            `${VERCEL_API}/v10/projects/${VERCEL_PROJECT_ID}/domains?teamId=${process.env.VERCEL_TEAM_ID || ''}`,
+            `${VERCEL_API}/v10/projects/${VERCEL_PROJECT_ID}/domains${process.env.VERCEL_TEAM_ID ? `?teamId=${process.env.VERCEL_TEAM_ID}` : ''}`,
             { name: domain },
             {
                 headers: {
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
 
         return NextResponse.json({
             success: true,
-            message: `Domain ${domain} added successfully`,
+            message: `Successfully connected ${domain}! Now point your DNS to Vercel.`,
             data: response.data,
         });
     } catch (err: any) {

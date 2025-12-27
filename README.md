@@ -1,38 +1,28 @@
-# Vercel Custom Domain Manager
+# 🌐 BioDomain: The Multi-tenant Bio Link Builder
 
-A modern, one-page SaaS application that allows you to programmatically add custom domains to your Vercel project using the Vercel REST API.
+A premium SaaS platform built with Next.js 14 and Vercel API that allows users to create professional bio-link pages and host them on their own **custom domains**.
 
-## 🚀 Features
+## ✨ Features
+- **Split-Screen Editor**: Edit your profile and see changes in real-time on a mobile mockup.
+- **Custom Domain Provisioning**: Directly connects to the Vercel API to add `CNAME` or `A` records for your users.
+- **Multi-tenant Routing**: Uses Next.js Middleware to serve unique bio pages based on the request hostname.
+- **Modern Aesthetics**: Dark mode, glassmorphism, and smooth animations.
 
-- **Premium UI**: Modern glassmorphism design with responsive layout.
-- **Vercel Integration**: Direct communication with Vercel API to provision domains.
-- **DNS Guidance**: In-app instructions for users to configure CNAME and A records.
-- **Next.js 14**: Built with the latest App Router and TypeScript.
+## 🛠️ How it Works
+1. **User Dashboard**: Users create their profile (Name, Bio, Links).
+2. **Domain Connection**: Users enter their custom domain.
+3. **Vercel API**: The app uses your `VERCEL_API_TOKEN` to register the domain to your deployment.
+4. **Middleware**: When someone visits the custom domain, the app detects the hostname and displays that user's specific bio page.
 
-## 🛠️ Setup
-
-1. **Vercel API Token**: Generate a token at [vercel.com/account/tokens](https://vercel.com/account/tokens).
-2. **Project ID**: Find your Project ID in the Vercel Dashboard under **Project Settings -> General**.
-3. **Environment Variables**: Create or edit `.env.local` and add your credentials:
+## 🚀 Setup
+1. **Clone & Install**: `npm install`
+2. **Environment Variables**: Add these to `.env.local` and your Vercel Dashboard:
    ```env
-   VERCEL_API_TOKEN=your_token_here
-   VERCEL_PROJECT_ID=your_project_id_here
-   VERCEL_TEAM_ID= # Optional: Only if your project is in a Team
+   VERCEL_API_TOKEN=...
+   VERCEL_PROJECT_ID=...
+   NEXT_PUBLIC_ROOT_DOMAIN=localhost:3000 # Your main app domain
    ```
+3. **Run**: `npm run dev`
 
-## 📦 Getting Started
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## 📖 How it works
-
-1. **User Input**: User enters their custom domain (e.g., `app.userdomain.com`).
-2. **API Call**: The app calls the internal `/api/add-domain` route.
-3. **Vercel Provisioning**: The backend sends a POST request to `api.vercel.com/v10/projects/.../domains`.
-4. **DNS Setup**: The user is instructed to point their DNS to Vercel's edge network.
+## 📖 Deployment Tips
+To make subdomains work locally, you can use a tool like **Localtunnel** or **Ngrok**, or modify your `hosts` file to point `user.localhost` to `127.0.0.1`.
